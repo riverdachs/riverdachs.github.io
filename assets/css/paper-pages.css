@@ -1,0 +1,44 @@
+ /* Override generic .paper for this page to use your Style 3 tweaks */
+    .paper {
+      max-width: 1080px;
+      margin: 0 auto 3rem auto;
+      padding: 60px;
+      background-image: url("../images/texture-paper.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 6px;
+      box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.35);
+      text-align: left;
+    }
+
+    /* Hybrid Premium Balanced Typography (Style 3) */
+    .paper p {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      line-height: 1.48;
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 1.05em;
+      letter-spacing: 0.005em;
+    }
+
+    .paper h1,
+    .paper h2 {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-weight: 700;
+      color: #000;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    /* main heading inside paper (if you use h1 there later) */
+    .paper h1 {
+      font-size: 38px;
+    }
+
+    /* current section title inside paper */
+    .paper h2 {
+      font-size: 30px;
+      line-height: 1.25;
+    }
+
