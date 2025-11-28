@@ -33,7 +33,8 @@ body {
 .slogan {
     text-align: center;
     font-size: 1.8rem;
-    color: #2c5f7c;
+   /* color: #2c5f7c; */
+    color: #4a3425;
     padding: 2rem 0 1rem;
     font-style: italic;
     max-width: 1200px;
@@ -52,7 +53,7 @@ body {
 .hero-image {
     width: 100%;
     height: 800px;
-    background: url('https://i.imgur.com/qpsLUUB.jpeg');
+    background: url('../images/Emma-Izzy-Green-Lounger.jpg');
     background-size: cover;
     background-position: center;
     transition: transform 0.3s ease;
