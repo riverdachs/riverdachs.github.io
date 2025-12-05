@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pseudo-element Test</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .jeff-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      outline: 2px dashed hotpink; /* so you can see the container */
+      max-width: 800px;
+    }
+
+    .jeff-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+      padding: 0 0.5rem;
+      background: rgba(255, 255, 0, 0.25);
+    }
+
+    /* This is the critical part: prove ::before / ::after show text */
+    .jeff-title-bar::before,
+.jeff-title-bar::after {
+  content: "🐾🐾";
+  font-size: 1.5rem;
+  line-height: 1;
+  background: rgba(0, 255, 255, 0.2);
+  padding: 0.1rem 0.25rem;
+  border-radius: 4px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="jeff-title-bar">
+    <h1 class="jeff-title">Test Title</h1>
+  </div>
+
+</body>
+</html>

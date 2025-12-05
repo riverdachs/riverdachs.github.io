@@ -1,6 +1,8 @@
 <!-- <link rel="stylesheet" href="../assets/css/header.css"> -->
 <link rel="stylesheet" href="../assets/css/header.css">
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
   <div class="header-content">
     <a href="index.html"
@@ -11,6 +13,11 @@
         <span class="header-subtitle">MINIATURE DACHSHUNDS</span>
       </div>
     </a>
+
+<!-- <Operates the waffle under 900px> -->
+    <button class="nav-toggle" aria-label="Toggle Navigation">
+  ☰
+</button>
 
     <nav>
       <div class="nav-item has-dropdown">
@@ -64,7 +71,13 @@
         </div>
       </div>
 
-      <a href="../forns/contact-us.html"i class="contact-btn">Contact Us</a>
+      <a href="../forms/contact-us.html" class="contact-btn">Contact Us</a>
     </nav>
   </div>
+  <!-- JS to invoke hamburger waffle -->
+  <script>
+  document.querySelector('.nav-toggle').addEventListener('click', () => {
+    document.querySelector('nav').classList.toggle('active');
+  });
+</script>
 </header>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paw Rail Preview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f7f5f3;
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-top: 0;
+      color: #555;
+    }
+
+    .preview-rail {
+      height: 40px;                     /* preview height */
+      margin-top: 40px;
+      outline: 1px dashed #aaa;
+
+      background-image: url("alternating-paw-print.svg");
+      background-repeat: repeat-x;
+      background-size: auto 100%;       /* scale strip to rail height */
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Alternating Dark/Light Paw Rail Preview</h2>
+  <p>This shows how the alternating paw strip will look when tiled across your title bar.</p>
+
+  <div class="preview-rail"></div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Title Test</title>
+
+  <!-- Brand font (Crimson Text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    body {
+      font-family: "Crimson Text", serif;
+      padding: 2rem;
+      text-align: center;
+      background: #fff;
+    }
+
+    /* --- TITLE WRAPPER --- */
+    .page-title-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin: 2rem auto;
+    }
+
+    /* --- TITLE TEXT --- */
+    .page-title {
+      font-size: 1.2rem;       /* ADJUST TITLE SIZE HERE */
+      font-weight: 600;
+      color: #3a2a2a;
+      text-transform: capitalize;
+      margin: 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- PAWS BEFORE & AFTER --- */
+    .page-title-wrap::before,
+    .page-title-wrap::after {
+      content: "🐾🐾";          /* ADJUST HOW MANY PAWS HERE */
+      font-size: 1.3rem;        /* ADJUST PAW SIZE HERE */
+      line-height: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="page-title-wrap">
+    <h1 class="page-title">My Suggestions for Feeding Your New Puppy</h1>
+  </div>
+
+</body>
+</html>

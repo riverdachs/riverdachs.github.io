@@ -1,163 +1,394 @@
-header {
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* ==========================================
+   HEADER BASE
+========================================== */
+
+header,
+.site-header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  background-color: #ffffff; /* crisp white for logo clarity */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 10;
 }
+
+/* Thin brown strip across the very top of the site */
+header::before,
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #4a3425; /* rich River Dachs brown */
+  z-index: 11;
+}
+
+/* Thin brown strip across the very bottom of the header */
+header::after,
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #4a3425;
+  z-index: 11;
+}
+
+/* No bottom line here anymore – we’ll put that on <main> in styles.css */
+
+
+/* ==========================================
+   HEADER INNER LAYOUT
+========================================== */
 
 .header-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* tighter option previously considered:
-       padding: 0.35rem 2rem 0.35rem 1rem; */
-    padding: 0.45rem 2rem 0.45rem 1rem;
+  max-width: 1400px;           /* matches your main page width */
+  margin: 0 auto;
+  padding: 1.25rem 1rem 1rem;  /* extra top padding for the strip */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 12;                 /* above the brown strip and background */
 }
 
-/* Logo/branding left side */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
+/* Logo sizing */
+.header-logo img {
+  display: block;
+  max-height: 64px;
+  height: auto;
 }
 
 .header-dog-silhouette {
-    width: 120px;
-    height: auto;
-    object-fit: contain;
+  width: 120px;
+  height: auto;
+  object-fit: contain;
 }
 
 .header-name-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .header-name {
-    color: #4a3425;
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: 'Crimson Text', Georgia, serif;
-    line-height: 0.9;
-    text-transform: capitalize;
+  color: #4a3425;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Crimson Text', Georgia, serif;
+  line-height: 0.9;
+  text-transform: capitalize;
 }
 
 .header-subtitle {
-    color: #c8985f;
-    font-size: 0.6rem;
-    font-weight: 600;
-    font-family: 'Montserrat', Arial, sans-serif;
-    line-height: 1;
-    letter-spacing: 0.19em;
-    text-transform: uppercase;
-    padding-left: 0.05rem;
-    margin-left: 0;
+  color: #c8985f;
+  font-size: 0.6rem;
+  font-weight: 600;
+  font-family: 'Montserrat', Arial, sans-serif;
+  line-height: 1;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  padding-left: 0.05rem;
+  margin-left: 0;
 }
 
-/* Old circular logo placeholder (if used) */
+/* Optional old circular logo placeholder (if used anywhere) */
 .logo-placeholder {
-    width: 80px;
-    height: 80px;
-    background-image: url('https://i.imgur.com/9Wo8xwX.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
+  width: 80px;
+  height: 80px;
+  background-image: url('https://i.imgur.com/9Wo8xwX.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .logo-placeholder i {
-    display: none;
+  display: none;
 }
 
 .logo-text h1,
 .logo-text p {
-    font-size: 1.3rem;
-    color: #2c5f7c;
-    margin: 0;
-    line-height: 1;
-    font-weight: normal;
-    white-space: nowrap;
+  font-size: 1.3rem;
+  color: #2c5f7c;
+  margin: 0;
+  line-height: 1;
+  font-weight: normal;
+  white-space: nowrap;
 }
 
-/* NAVIGATION */
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+/* NAV container */
 nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;   /* so dropdowns anchor correctly */
+  z-index: 20;          /* above header background + strip */
 }
 
+/* Base nav link styling */
+nav a {
+  color: #4a3425;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 550;
+  transition: color 0.3s;
+}
+
+/* Each top-level nav item */
 .nav-item {
-    position: relative;
-    padding: 0.25rem 1rem;
-}
-
-.nav-item > a {
-    color: #4a3425;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 550;
-    transition: color 0.3s;
+  position: relative;   /* anchor for its own dropdown */
+  padding: 0.25rem 1rem;
 }
 
 .nav-item > a:hover {
-    color: #c8985f;
+  color: #c8985f;
 }
 
+/* Adds ▼ to items with dropdowns */
 .nav-item.has-dropdown > a::after {
-    content: " ▼";
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
+  content: " ▼";
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
 }
 
-/* DROPDOWN */
+/* DROPDOWN PANEL */
 .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    min-width: 200px;
-    border-radius: 4px;
-    padding: 0.5rem 0;
+  display: none;
+  position: absolute;
+  top: 100%;              /* directly under the nav item */
+  left: 0;
+
+  background: #ffffff;    /* solid card */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+
+  min-width: 220px;
+  padding: 0.5rem 0;
+
+  z-index: 1000;          /* above header & content */
 }
 
+/* Links inside dropdown */
 .dropdown a {
-    display: block;
-    padding: 0.35rem 1.25rem; /* was 0.75rem 1.5rem */
-    line-height: 1.2;
-    color: #4a3425;
-    text-decoration: none;
-    transition: background 0.3s;
+  display: block;
+  padding: 0.5rem 1.25rem;
+  line-height: 1.3;
+  color: #4a3425;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s;
 }
 
 .dropdown a:hover {
-    background: #f5f5f5;
-    color: #c8985f;
+  background: #f5f5f5;
+  color: #c8985f;
 }
 
+/* Hover to open dropdown */
 .nav-item:hover .dropdown {
-    display: block;
+  display: block;
 }
 
-/* CONTACT BUTTON */
+/* ==========================================
+   CONTACT BUTTON
+========================================== */
+
 .contact-btn {
-    background: #2c5f7c;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: background 0.3s;
-    margin-left: 1rem;
+  background: #2c5f7c;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin-left: 1rem;
+  margin-right: 0.75rem;
 }
 
 .contact-btn:hover {
-    background: #4a9bc6;
+  background: #4a9bc6;
+}
+
+/* ===========================
+   RESPONSIVE HEADER RESCUE LAYER
+   (safe to append at end)
+=========================== */
+
+/* Make sure <header> spans the full viewport width */
+header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Draw a thin brown line along the bottom of the header */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #4a3425;
+  z-index: 11;
+}
+
+/* Keep header content centered and with sane padding */
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+/* Contact button breathing room on the right */
+.contact-btn {
+  margin-right: 0.75rem;
+}
+
+/* Tablet / small laptop: let nav wrap and shrink gently */
+@media (max-width: 960px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 0.25rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .nav-item {
+    padding: 0.2rem 0.5rem;
+  }
+
+  .contact-btn {
+    padding: 0.55rem 1.25rem;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Phones: reduce font size + padding so it fits better */
+@media (max-width: 640px) {
+  nav {
+    gap: 0.25rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .nav-item {
+    padding: 0.15rem 0.4rem;
+  }
+
+  .contact-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem;
+  }
+}
+
+/* ==========================================
+   NAV TWEAKS FOR IPAD / SMALL LAPTOP WIDTHS
+========================================== */
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  /* Allow header to wrap if needed */
+  .header-content {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  /* Logo stays on its own row only if wrapping occurs */
+  .header-content > a {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  /* Nav takes full width and stays centered */
+  nav {
+    flex: 1 1 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
+
+  /* More readable iPad font size */
+  nav a {
+    font-size: 1.05rem;   /* <<< NEW: better readability on tablets */
+  }
+
+  /* Keep titles from exploding in height */
+  .nav-item {
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* Contact button stays proportional but readable */
+  .contact-btn {
+    font-size: 1rem;        /* more readable on iPad */
+    padding: 0.6rem 1.35rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Hamburger button - hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #4a3425;
+  cursor: pointer;
+}
+
+/* Show hamburger at tablet/phone sizes */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  nav {
+    display: none;  /* hidden until toggled */
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    padding: 0.5rem 1rem 1rem;
+    border-top: 2px solid #4a3425; /* matches your design */
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+  }
 }

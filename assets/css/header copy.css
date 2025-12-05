@@ -1,0 +1,202 @@
+/* OPTION C — TWO-TONE HEADER WITH BRAND STRIP */
+
+/* Overall header background */
+header,
+.site-header {
+  background-color: #ffffff; /* crisp white for logo clarity */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 10;
+}
+
+/* Brown strip across the very top of the site */
+header::before,
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0px;               /* thicker so it's clearly visible */
+  background-color: #4a3425; /* rich River Dachs brown */
+  z-index: 11;
+}
+
+/* 2px separator UNDER the header */
+header::after,
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #4a3425;
+  z-index: 12; /* above background, below content */
+}
+
+/* FLEX ROW: logo on left, nav on right */
+.header-content {
+  max-width: 1400px;   /* matches your main page width */
+  margin: 0 auto;
+  padding: 1.25rem 1rem 1rem;  /* extra top padding for the strip */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 12;           /* above the brown strip and white background */
+}
+
+/* Logo sizing */
+.header-logo img {
+  display: block;
+  max-height: 64px;
+  height: auto;
+}
+
+.header-dog-silhouette {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.header-name-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.header-name {
+    color: #4a3425;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Crimson Text', Georgia, serif;
+    line-height: 0.9;
+    text-transform: capitalize;
+}
+
+.header-subtitle {
+    color: #c8985f;
+    font-size: 0.6rem;
+    font-weight: 600;
+    font-family: 'Montserrat', Arial, sans-serif;
+    line-height: 1;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    padding-left: 0.05rem;
+    margin-left: 0;
+}
+
+/* Old circular logo placeholder (if used anywhere) */
+.logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://i.imgur.com/9Wo8xwX.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.logo-placeholder i {
+    display: none;
+}
+
+.logo-text h1,
+.logo-text p {
+    font-size: 1.3rem;
+    color: #2c5f7c;
+    margin: 0;
+    line-height: 1;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    position: relative;
+    padding: 0.25rem 1rem;
+}
+
+.nav-item > a {
+    color: #4a3425;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 550;
+    transition: color 0.3s;
+}
+
+.nav-item > a:hover {
+    color: #c8985f;
+}
+
+.nav-item.has-dropdown > a::after {
+    content: " ▼";
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+}
+
+/* DROPDOWN */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 200px;
+    border-radius: 4px;
+    padding: 0.5rem 0;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0.35rem 1.25rem;
+    line-height: 1.2;
+    color: #4a3425;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown a:hover {
+    background: #f5f5f5;
+    color: #c8985f;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+
+/* CONTACT BUTTON */
+.contact-btn {
+    background: #2c5f7c;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s;
+    margin-left: 1rem;
+}
+
+.contact-btn:hover {
+    background: #4a9bc6;
+
+.footer-bottom {
+    background: transparent; /* background now handled by footer */
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}}

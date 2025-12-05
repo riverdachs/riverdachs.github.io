@@ -3,107 +3,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #2c5f7c;
-  outline-offset: 2px;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Global page background – current gradient in use */
+/* Global page background – soft warm gradient down the page */
 body {
   margin: 0;
   font-family: "Georgia", serif;
   color: #333;
   line-height: 1.6;
-
-  /* Softer black gradient */
-  background: linear-gradient(
-    to bottom,
-    #ffffff 0%,     /* pure white at the top */
-    #e6e6e6 25%,    /* very light gray */
-    #9e9e9e 60%,    /* medium neutral gray */
-    #1a1a1a 100%    /* deep charcoal at the bottom */
-  );
+  background: #ffffff;   /* clean pure white */
 }
 
-/* (Optional) If you want to keep the other gradients for later,
-   paste them in ONE big comment like this:
-
-   /*
-   Alt gradient – white to gray:
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-     to bottom,
-     #ffffff 0%,
-     #efefef 35%,
-     #dcdcdc 70%,
-     #c8c8c8 100%
-      );
-
-    Alt gradient – white to gray:
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-     to bottom,
-     #ffffff 0%,
-     #e6e6e6 25%,
-     #9e9e9e 60%,
-     #1a1a1a 100%
-  );
-   Alt - Stronger Black Gradient
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-       to bottom,
-       #ffffff 0%, 
-       #dcdcdc 20%,
-       #888888 50%,
-       #000000 100% 
-  );
-
-   *\/
-*/
+/* PAGE TITLE (global) */
+/* Old page-title - remove later
+.page-title {
+    margin-top: 0.75rem;  */     /* less space above */
+  /*  margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #4a3425; */           /* your dark brown */
+/* } */
 
 /* Slogan on home page */
 .slogan {
-  text-align: center;
-  font-family: 'Crimson Text', Georgia, serif;
-  font-weight: 700;
-
-  /* Big, but responsive */
-  font-size: clamp(1.55rem, 1.75vw + 1rem, 1.9rem);
-
-  /* Rich brown */
-  color: #4a3425;
-  font-style: italic;
-
-  /* Match hero width & keep centered */
-  max-width: 1400px;
-  margin: 0 auto;
-
-  /* Space after header + above hero */
-  padding: 1.5rem 2rem 2rem;
-
-  background: transparent;
+    text-align: center;
+    font-size: 1.8rem;
+   /* color: #2c5f7c; */
+    color: #4a3425;
+    padding: 2rem 0 1rem;
+    font-style: italic;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
 }
 
 /* HERO SECTION */
@@ -870,223 +807,24 @@ main {
   /*
   background: linear-gradient(
     to bottom,
-    #ffffff 0%, */     /* pure white at the top */
-  /*  #fefefe 20%,   */  /* nearly white */
-  /*  #fdfbf9 50%,   */  /* trace warm hint */
-  /*  #faf7f4 100%   */  /* gentle warmth anchoring the bottom */
-/*  );
+    #ffffff 0%,     /* pure white at the top */
+    #fefefe 20%,    /* nearly white */
+    #fdfbf9 50%,    /* trace warm hint */
+    #faf7f4 100%    /* gentle warmth anchoring the bottom */
+  );
 }
 */
-
-/* ==========================================
-   RESPONSIVE HERO & DOG GRID
-========================================== */
-
-@media (max-width: 1024px) {
-  .hero {
-    padding: 0 1.5rem 2.5rem;
-  }
-
-  .hero-image {
-    height: 550px; /* down from 800px */
-  }
-
-  .slogan {
-    font-size: 1.6rem;
-    padding: 1.5rem 1rem 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 0 1rem 2rem;
-  }
-
-  .hero-image {
-    height: 360px;
-    border-radius: 10px;
-  }
-
-  .slogan {
-    font-size: 1.35rem;
-    padding: 1.25rem 1rem 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-image {
-    height: 260px;
-    border-radius: 8px;
-  }
-
-  .slogan {
-    font-size: 1.2rem;
-    padding: 1rem 0.9rem 0.75rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .dogs-grid {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .dog-card {
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .dogs-grid {
-    grid-template-columns: 1fr; /* single column */
-    padding: 2rem 1rem;
-    gap: 1.5rem;
-  }
-
-  .dog-card {
-    height: 320px;
-  }
-
-  .dog-card-title {
-    font-size: 1.05rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .dogs-grid {
-    padding: 1.75rem 0.75rem 2.5rem;
-    gap: 1.25rem;
-  }
-
-  .dog-card {
-    height: 260px;
-  }
-
-  .dog-card-title {
-    font-size: 1rem;
-    padding: 0.45rem 0.9rem;
-  }
-}
-
-/* PAGE LAYOUT CONTAINER */
 main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.75rem 1rem 3rem;  /* ↑ top padding gives more room under header */
-}
+  padding: 2rem 1rem 3rem;
 
-/* Light gray content box that sits on top of the gradient */
-.page-box {
-  max-width: 1000px;
-  margin: 3.5rem auto 5rem;
-  padding: 2.5rem 2.5rem 3rem;
-  border-radius: 8px;
-
+  /* Ultra-subtle clean gray fade */
   background: linear-gradient(
     to bottom,
-    #e6e6e6 0%,     /* darker gray at top */
-    #f5f5f5 60%,    /* soft transition */
-    #ffffff 100%    /* white at the bottom */
+    #ffffff 0%,     /* pure white at the top */
+    #fcfcfc 25%,    /* nearly white */
+    #f8f8f8 60%,    /* faint gray tone */
+    #f3f3f3 100%    /* soft gray grounding at bottom */
   );
-}
-
-/* Accessible skip link */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0.5rem;
-  background: #4a3425;
-  color: #fff;
-  padding: 0.5rem 0.75rem;
-  z-index: 10000;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.skip-link:focus-visible {
-  left: 0.75rem;
-}
-
-/* ===========================
-   RESPONSIVE LAYOUT RESCUE LAYER
-   (safe to append at end)
-=========================== */
-
-/* Make regular <img> tags scale with the viewport */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Don't let the hero be taller than the viewport */
-.hero-image {
-  max-height: 80vh;   /* at most 80% of the screen height */
-}
-
-/* Tablet-ish */
-@media (max-width: 1024px) {
-  .hero {
-    padding: 0 1.25rem 2.5rem;
-  }
-
-  .hero-image {
-    height: 480px; /* down from 800px */
-  }
-
-  .dogs-grid {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .dog-card {
-    height: 380px;
-  }
-}
-
-/* Phones and small tablets */
-@media (max-width: 768px) {
-  main {
-    padding: 1.5rem 0.75rem 2.5rem;
-  }
-
-  .hero {
-    padding: 0.5rem 0.75rem 2rem;
-  }
-
-  .hero-image {
-    height: 320px;
-    border-radius: 10px;
-  }
-
-  .slogan {
-    padding-inline: 1rem;
-  }
-
-  .dogs-grid {
-    grid-template-columns: 1fr;  /* single column on phones */
-    padding: 2rem 0.75rem;
-    gap: 1.5rem;
-  }
-
-  .dog-card {
-    height: 260px;
-  }
-
-  .dog-card-title {
-    font-size: 1rem;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 480px) {
-  .hero-image {
-    height: 260px;
-  }
-
-  .dogs-grid {
-    padding-inline: 0.5rem;
-    gap: 1.25rem;
-  }
-
-  .dog-card {
-    height: 220px;
-  }
 }

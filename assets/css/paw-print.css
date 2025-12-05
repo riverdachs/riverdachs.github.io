@@ -1,0 +1,101 @@
+/************************************************************
+ PAGE TITLE BAR — SHARED BASE STYLES
+************************************************************/
+
+.page-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: min(2vw, 1.5rem);
+    margin: 2.5rem auto;
+
+    /* Responsive content width */
+    width: 100%;
+    max-width: min(1100px, 92vw);
+
+    padding: 0 1rem;
+    flex-wrap: nowrap;
+}
+
+/************************************************************
+ PAGE TITLE — TEXT
+************************************************************/
+
+.page-title {
+    font-family: "Crimson Text", Georgia, serif;
+    font-weight: 600;
+    color: #3a2a2a;
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    text-align: center;
+
+    margin: 0;
+    padding: 0 0.5rem;
+
+    /* Responsive, slightly smaller */
+    font-size: clamp(1.1rem, 2.1vw, 1.5rem);
+
+    /* Keep title on ONE LINE */
+    white-space: nowrap;
+
+    flex: 0 0 auto;
+}
+
+/* Use this class ONLY when you know the title is wordier */
+.page-title--long {
+    font-size: clamp(1rem, 1.9vw, 1.35rem);
+}
+
+/************************************************************
+ PAW RAILS — BASE STYLES (left + right)
+ This is your normal working version.
+************************************************************/
+
+.page-title-bar::before,
+.page-title-bar::after {
+    content: "";
+    flex: 1 1 0;
+    min-width: 0;
+
+    /* Paw rail height = paw size */
+    height: 1.2em;
+
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center;
+
+    margin: 0 0.5rem;
+}
+
+/************************************************************
+ DARK (DEFAULT) PAW STRIP
+→ Uses paw-print.svg
+************************************************************/
+
+.page-title-bar::before,
+.page-title-bar::after {
+    background-image: url("../images/paw-print.svg");  
+}
+
+/************************************************************
+ LIGHT VERSION OF PAWS
+→ Uses paw-print-light.svg
+→ Slight opacity reduction for subtle tone
+************************************************************/
+
+.page-title-bar--light::before,
+.page-title-bar--light::after {
+    background-image: url("../images/paw-print-light.svg");
+    opacity: 0.65;
+}
+
+/************************************************************
+ ALTERNATING DARK + LIGHT VERSION
+→ Uses alternating-paw-print.svg
+************************************************************/
+
+.page-title-bar--alt::before,
+.page-title-bar--alt::after {
+    background-image: url("../images/alternating-paw-print.svg");
+}
