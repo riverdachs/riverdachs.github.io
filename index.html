@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
   <title>River Dachs Miniature Dachshunds</title>
 
   <!-- Icons -->
@@ -65,6 +66,24 @@
   <div id="footer-placeholder"></div>
 
   <!-- LOAD SHARED HEADER + FOOTER -->
-  <script src="assets/js/includes.js"></script>
+   <script src="assets/js/includes.js"></script> 
+
+  <!-- Global nav toggle for hamburger/waffle -->
+  <script>
+    document.addEventListener('click', function (event) {
+      // Find a .nav-toggle button up the click chain
+      const toggle = event.target.closest('.nav-toggle');
+      if (!toggle) return; // click wasn't on the waffle
+
+      // Find the nearest header and its nav
+      const header = toggle.closest('header');
+      if (!header) return;
+
+      const nav = header.querySelector('nav');
+      if (!nav) return;
+
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
