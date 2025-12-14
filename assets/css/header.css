@@ -22,6 +22,7 @@ header::before,
   top: 0;
   left: 0;
   right: 0;
+  height: 2px;
   background-color: #4a3425; /* rich River Dachs brown */
   z-index: 11;
 }
@@ -96,35 +97,6 @@ header::after,
   text-transform: uppercase;
   padding-left: 0.05rem;
   margin-left: 0;
-}
-
-/* Optional old circular logo placeholder (if used anywhere) */
-.logo-placeholder {
-  width: 80px;
-  height: 80px;
-  background-image: url('https://i.imgur.com/9Wo8xwX.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5rem;
-}
-
-.logo-placeholder i {
-  display: none;
-}
-
-.logo-text h1,
-.logo-text p {
-  font-size: 1.3rem;
-  color: #2c5f7c;
-  margin: 0;
-  line-height: 1;
-  font-weight: normal;
-  white-space: nowrap;
 }
 
 /* ==========================================
@@ -250,7 +222,7 @@ header::after {
   z-index: 11;
 }
 
-/* Keep header content centered and with sane padding */
+/* Keep header content centered and with same padding */
 .header-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -289,26 +261,6 @@ header::after {
     font-size: 0.9rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-  }
-}
-
-/* Phones: reduce font size + padding so it fits better */
-@media (max-width: 640px) {
-  nav {
-    gap: 0.25rem;
-  }
-
-  nav a {
-    font-size: 0.85rem;
-  }
-
-  .nav-item {
-    padding: 0.15rem 0.4rem;
-  }
-
-  .contact-btn {
-    font-size: 0.85rem;
-    padding: 0.5rem 1.1rem;
   }
 }
 
@@ -366,15 +318,31 @@ header::after {
   cursor: pointer;
 }
 
-/* Show hamburger at tablet/phone sizes */
-@media (max-width: 900px) {
+/* Show hamburger only on phones (<=640px) */
+  @media (max-width: 640px) {
   .nav-toggle {
     display: block;
     margin-left: auto;
     margin-right: 1rem;
   }
+    nav {
+    gap: 0.25rem;
+  }
 
-  nav {
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .nav-item {
+    padding: 0.15rem 0.4rem;
+  }
+
+  .contact-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  header nav {
     display: none;  /* hidden until toggled */
     flex-direction: column;
     width: 100%;
@@ -383,12 +351,56 @@ header::after {
     border-top: 2px solid #4a3425; /* matches your design */
   }
 
-  nav.active {
+  header nav.active {
     display: flex;
   }
 
-  nav a {
+  header nav a {
     font-size: 1.1rem;
     padding: 0.75rem 0;
+  }
+}
+
+/* Keep nav label + ▼ on the same line in mid-widths (iPad / small laptop) */
+@media (min-width: 1000px) and (max-width: 1400px) {
+  nav > .nav-item > a {
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================
+   TABLET NAV: Keep Contact Us visible and normal-sized
+   (iPad / small laptop range)
+========================================== */
+
+@media (min-width: 641px) and (max-width: 900px) {
+  /* No hamburger in this band */
+  .nav-toggle {
+    display: none !important;
+  }
+
+  /* Show the full nav and let it wrap if needed */
+  header nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background: #fff;
+    padding: 0.5rem 0.75rem 1rem;
+    border-top: 2px solid #4a3425;
+  }
+
+  /* Slightly smaller links so they fit nicely */
+  header nav a {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  /* Contact Us wraps if needed, but stays a normal pill-sized button */
+  header nav .contact-btn {
+    display: inline-flex !important;
+    flex-basis: auto;
+    justify-content: center;
+    margin: 0.4rem 0.5rem 0;
   }
 }
