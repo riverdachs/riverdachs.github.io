@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Detect if we're in a subdirectory
+  const pathPrefix = window.location.pathname.includes('/docs/') || 
+                     window.location.pathname.includes('/forms/') 
+                     ? '../' : '';
+
   // HEADER
   const headerPlaceholder = document.getElementById('header-placeholder');
   if (headerPlaceholder) {
-    fetch('includes/header.html')
+    fetch(pathPrefix + 'includes/header.html')
       .then(response => response.text())
       .then(html => {
         headerPlaceholder.innerHTML = html;
@@ -13,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // FOOTER
   const footerPlaceholder = document.getElementById('footer-placeholder');
   if (footerPlaceholder) {
-    fetch('includes/footer.html')
+    fetch(pathPrefix + 'includes/footer.html')
       .then(response => response.text())
       .then(html => {
         footerPlaceholder.innerHTML = html;
