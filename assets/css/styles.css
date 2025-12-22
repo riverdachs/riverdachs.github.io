@@ -25,63 +25,12 @@ body {
   /* Softer black gradient */
   background: linear-gradient(
     to bottom,
-    #ffffff 0%,     /* pure white at the top */
-    #e6e6e6 25%,    /* very light gray */
-    #9e9e9e 60%,    /* medium neutral gray */
-    #1a1a1a 100%    /* deep charcoal at the bottom */
+    #ffffff 0%,
+    #e6e6e6 30%,
+    #b8b8b8 70%,
+    #808080 100%
   );
 }
-
-/* (Optional) If you want to keep the other gradients for later,
-   paste them in ONE big comment like this:
-
-   /*
-   Alt gradient – white to gray:
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-     to bottom,
-     #ffffff 0%,
-     #efefef 35%,
-     #dcdcdc 70%,
-     #c8c8c8 100%
-      );
-
-    Alt gradient – white to gray:
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-     to bottom,
-     #ffffff 0%,
-     #e6e6e6 25%,
-     #9e9e9e 60%,
-     #1a1a1a 100%
-  );
-   Alt - Stronger Black Gradient
-   body {
-     margin: 0;
-     font-family: "Georgia", serif;
-     color: #333;
-     line-height: 1.6;
-
-     background: linear-gradient(
-       to bottom,
-       #ffffff 0%, 
-       #dcdcdc 20%,
-       #888888 50%,
-       #000000 100% 
-  );
-
-   *\/
-*/
 
 /* Slogan on home page */
 .slogan {
@@ -453,7 +402,7 @@ body {
     right: 0;
     bottom: 0;
     width: 60%;
-    background-image: url('../images/Izzy-hero.png');
+    background-image: url('../images/hero-image.jpg');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -877,95 +826,6 @@ main {
 /*  );
 }
 */
-
-/* ==========================================
-   RESPONSIVE HERO & DOG GRID
-========================================== */
-
-@media (max-width: 1024px) {
-  .hero {
-    padding: 0 1.5rem 2.5rem;
-  }
-
-  .hero-image {
-    height: 550px; /* down from 800px */
-  }
-
-  .slogan {
-    font-size: 1.6rem;
-    padding: 1.5rem 1rem 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 0 1rem 2rem;
-  }
-
-  .hero-image {
-    height: 360px;
-    border-radius: 10px;
-  }
-
-  .slogan {
-    font-size: 1.35rem;
-    padding: 1.25rem 1rem 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-image {
-    height: 260px;
-    border-radius: 8px;
-  }
-
-  .slogan {
-    font-size: 1.2rem;
-    padding: 1rem 0.9rem 0.75rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .dogs-grid {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .dog-card {
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .dogs-grid {
-    grid-template-columns: 1fr; /* single column */
-    padding: 2rem 1rem;
-    gap: 1.5rem;
-  }
-
-  .dog-card {
-    height: 320px;
-  }
-
-  .dog-card-title {
-    font-size: 1.05rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .dogs-grid {
-    padding: 1.75rem 0.75rem 2.5rem;
-    gap: 1.25rem;
-  }
-
-  .dog-card {
-    height: 260px;
-  }
-
-  .dog-card-title {
-    font-size: 1rem;
-    padding: 0.45rem 0.9rem;
-  }
-}
 
 /* PAGE LAYOUT CONTAINER */
 main {

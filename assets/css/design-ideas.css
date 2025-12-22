@@ -1,0 +1,51 @@
+/* (Optional) If you want to keep the other gradients for later,
+   paste them in ONE big comment like this:
+
+   /*
+   Alt gradient – white to gray:
+   body {
+     margin: 0;
+     font-family: "Georgia", serif;
+     color: #333;
+     line-height: 1.6;
+
+     background: linear-gradient(
+     to bottom,
+     #ffffff 0%,
+     #efefef 35%,
+     #dcdcdc 70%,
+     #c8c8c8 100%
+      );
+
+    Alt gradient – white to gray:
+   body {
+     margin: 0;
+     font-family: "Georgia", serif;
+     color: #333;
+     line-height: 1.6;
+
+     background: linear-gradient(
+     to bottom,
+     #ffffff 0%,
+     #e6e6e6 25%,
+     #9e9e9e 60%,
+     #1a1a1a 100%
+  );
+   Alt - Stronger Black Gradient
+   body {
+     margin: 0;
+     font-family: "Georgia", serif;
+     color: #333;
+     line-height: 1.6;
+
+     background: linear-gradient(
+       to bottom,
+       #ffffff 0%, 
+       #dcdcdc 20%,
+       #888888 50%,
+       #000000 100% 
+  );
+
+   *\/
+*/
+

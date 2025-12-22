@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>River Dachs - Hero Scroll Effect Test</title>
+
+  <!-- Test stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles-test.css" />
+</head>
+<body>
+  <!-- SIMPLE FIXED HEADER FOR TESTING -->
+  <header>
+    <h1>River Dachs Miniature Dachshunds</h1>
+  </header>
+
+  <!-- HERO SECTION (slogan + overlay hero) -->
+  <div class="hero-section">
+    <!-- STATIC SLOGAN IN WHITE SPACE -->
+    <div class="slogan-container">
+      <div class="permanent-slogan">
+        Breeding Excellence, Raising Love, Bringing Joy
+      </div>
+    </div>
+
+    <!-- HERO WRAPPER (overlay that animates, then becomes static) -->
+    <div class="hero-wrapper" id="heroWrapper">
+      <img
+        src="https://images.unsplash.com/photo-1518900673653-cf9fdd01e430?w=1200&h=800&fit=crop"
+        alt="River Dachs Hero"
+        class="hero-image"
+      />
+    </div>
+
+    <!-- BIG OVERLAY TEXT ON FULL HERO -->
+    <div class="welcome-slogan" id="welcomeSlogan">
+      Welcome to River Dachs
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT BELOW HERO -->
+  <div class="content">
+    <h2>Our Dogs</h2>
+
+    <div class="dog-cards">
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1541599468348-e96984315921?w=400&h=300&fit=crop"
+          alt="Izzy"
+        />
+        <div class="dog-card-content">
+          <h3>Izzy</h3>
+          <p>
+            Beautiful long-haired dachshund with a sweet temperament and
+            excellent conformation.
+          </p>
+        </div>
+      </div>
+
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1612536284014-e959992bdb53?w=400&h=300&fit=crop"
+          alt="Annabelle"
+        />
+        <div class="dog-card-content">
+          <h3>Annabelle</h3>
+          <p>
+            Charming and affectionate, Annabelle brings joy to everyone she
+            meets.
+          </p>
+        </div>
+      </div>
+
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=300&fit=crop"
+          alt="Emma"
+        />
+        <div class="dog-card-content">
+          <h3>Emma</h3>
+          <p>
+            Elegant and graceful with a wonderful personality and champion
+            bloodlines.
+          </p>
+        </div>
+      </div>
+
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400&h=300&fit=crop"
+          alt="Abby"
+        />
+        <div class="dog-card-content">
+          <h3>Abby</h3>
+          <p>
+            Playful and loving, Abby is a joy to have in our breeding program.
+          </p>
+        </div>
+      </div>
+
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1568572933382-74d440642117?w=400&h=300&fit=crop"
+          alt="Aspen"
+        />
+        <div class="dog-card-content">
+          <h3>Aspen</h3>
+          <p>
+            Smart and friendly with exceptional health testing results.
+          </p>
+        </div>
+      </div>
+
+      <div class="dog-card">
+        <img
+          src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400&h=300&fit=crop"
+          alt="Banks"
+        />
+        <div class="dog-card-content">
+          <h3>Banks</h3>
+          <p>
+            Handsome and spirited, Banks brings energy and love to our program.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const header = document.querySelector("header");
+      const heroWrapper = document.getElementById("heroWrapper");
+      const welcomeSlogan = document.getElementById("welcomeSlogan");
+
+      if (!header || !heroWrapper || !welcomeSlogan) return;
+
+      // CONFIG tuned to keep the effect slower and slogan in view
+      const CONFIG = {
+        scrollTotal: 1200,      // total scroll distance for full intro animation
+        phase1Portion: 0.45,    // 0–45% of scroll: only top shrinks (height)
+        marginTopSlogan: 130,   // matches CSS .slogan-container margin-top
+        sloganExtraGap: 60,     // approximate slogan block height
+        finalWidthFactor: 0.9,  // final hero width as fraction of viewport
+        finalMaxWidth: 1100,    // clamp for large screens
+        minFinalHeight: 520     // final hero minimum height
+      };
+
+      let startHeight = 600;
+      let midHeight = 500;
+      let finalHeight = 520;
+      let startWidth = window.innerWidth;
+      let finalWidth = 900;
+      let headerHeight = 80;
+
+      let animationComplete = false;
+      let ticking = false;
+
+      function clamp(v, min, max) {
+        return v < min ? min : v > max ? max : v;
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function easeOutQuad(t) {
+        return 1 - (1 - t) * (1 - t);
+      }
+
+      function measure() {
+        headerHeight = header.offsetHeight || 80;
+        const vh = window.innerHeight;
+        const vw = window.innerWidth;
+
+        startWidth = vw;
+        startHeight = vh - headerHeight;
+        if (startHeight < CONFIG.minFinalHeight + 80) {
+          startHeight = CONFIG.minFinalHeight + 80;
+        }
+
+        // Phase 1 target: hero's top roughly reaches bottom of slogan block
+        const phase1TargetTop =
+          headerHeight + CONFIG.marginTopSlogan + CONFIG.sloganExtraGap;
+
+        midHeight = vh - phase1TargetTop;
+        if (midHeight > startHeight - 40) {
+          midHeight = startHeight - 40;
+        }
+        if (midHeight < CONFIG.minFinalHeight + 40) {
+          midHeight = CONFIG.minFinalHeight + 40;
+        }
+
+        finalHeight = Math.max(CONFIG.minFinalHeight, midHeight - 50);
+        finalWidth = Math.min(vw * CONFIG.finalWidthFactor, CONFIG.finalMaxWidth);
+
+        // Initial overlay hero: full-screen under header, anchored to bottom
+        heroWrapper.classList.remove("complete");
+        heroWrapper.style.position = "fixed";
+        heroWrapper.style.bottom = "0";
+        heroWrapper.style.top = "";
+        heroWrapper.style.left = "50%";
+        heroWrapper.style.transform = "translateX(-50%)";
+        heroWrapper.style.width = startWidth + "px";
+        heroWrapper.style.height = startHeight + "px";
+        heroWrapper.style.borderRadius = "0px";
+        heroWrapper.style.zIndex = "10";
+
+        // Welcome text visible at start
+        welcomeSlogan.style.opacity = "1";
+      }
+
+      function update() {
+        if (animationComplete) {
+          ticking = false;
+          return;
+        }
+
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        const progress = clamp(scrollY / CONFIG.scrollTotal, 0, 1);
+        const phase1End = CONFIG.phase1Portion;
+
+        // Fade the overlay welcome text out early
+        const welcomeFade = clamp(1 - progress * 3, 0, 1);
+        welcomeSlogan.style.opacity = String(welcomeFade);
+
+        let currentHeight;
+        let currentWidth;
+        let currentRadius;
+
+        if (progress <= phase1End) {
+          // PHASE 1: only top shrinks (height), sides stay full-width
+          const t = easeOutQuad(progress / phase1End);
+          currentHeight = lerp(startHeight, midHeight, t);
+          currentWidth = startWidth;
+          currentRadius = 0;
+        } else {
+          // PHASE 2: sides start pulling in while height eases a bit more
+          const t = easeOutQuad((progress - phase1End) / (1 - phase1End));
+          currentHeight = lerp(midHeight, finalHeight, t);
+          currentWidth = lerp(startWidth, finalWidth, t);
+          currentRadius = lerp(0, 16, t);
+        }
+
+        heroWrapper.style.height = currentHeight + "px";
+        heroWrapper.style.width = currentWidth + "px";
+        heroWrapper.style.borderRadius = currentRadius + "px";
+
+        // Once we've finished the animation, switch to static hero in flow
+        if (progress >= 1) {
+          animationComplete = true;
+
+          // Let CSS .hero-wrapper.complete define the static layout
+          heroWrapper.classList.add("complete");
+          heroWrapper.style.position = "";
+          heroWrapper.style.bottom = "";
+          heroWrapper.style.top = "";
+          heroWrapper.style.width = "";
+          heroWrapper.style.height = "";
+          heroWrapper.style.borderRadius = "";
+          heroWrapper.style.zIndex = "";
+
+          // Ensure overlay text is gone
+          welcomeSlogan.style.opacity = "0";
+        }
+
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking && !animationComplete) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }
+
+      // Initial setup
+      measure();
+      update();
+
+      window.addEventListener("resize", function () {
+        if (!animationComplete) {
+          measure();
+          update();
+        }
+      });
+
+      window.addEventListener("scroll", requestTick, { passive: true });
+    })();
+  </script>
+</body>
+</html>

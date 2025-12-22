@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>River Dachs Miniature Dachshunds</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Global + header + footer styles -->
+  <link rel="stylesheet" href="assets/css/styles-single-hero.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+
+  <!-- SHARED HEADER -->
+  <div id="header-placeholder"></div>
+
+  <!-- WELCOME TEXT - Fades out early -->
+  <div class="welcome-text" id="welcomeText">Welcome to RiverDachs</div>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <div class="home-content active">
+      
+      <!-- SLOGAN - Positioned with lots of whitespace above -->
+      <div class="slogan">
+        Breeding Excellence, Raising Love, Bringing Joy
+      </div>
+
+      <!-- HERO IMAGE - Single image that animates then becomes static -->
+      <div class="hero" id="heroSection">
+        <div class="hero-image" id="heroImage"></div>
+      </div>
+
+      <!-- DOG GRID -->
+      <div class="dogs-grid">
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Beautiful Litter</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Our Champions</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Adorable Puppies</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Family Favorites</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">New Arrivals</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Happy Families</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- LOAD SHARED HEADER + FOOTER -->
+  <script src="assets/js/includes.js"></script>
+  
+  <!-- SINGLE HERO SCROLL ANIMATION -->
+  <script src="assets/js/single-hero-scroll.js"></script>
+
+  <!-- Global nav toggle -->
+  <script>
+    document.addEventListener('click', function (event) {
+      const toggle = event.target.closest('.nav-toggle');
+      if (!toggle) return;
+
+      const header = toggle.closest('header');
+      if (!header) return;
+
+      const nav = header.querySelector('nav');
+      if (!nav) return;
+
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -951,6 +951,7 @@ img {
   }
 }
 
+<<<<<<< HEAD
 /* ===== LAYERED SCROLL ANIMATION STYLES - FINAL FIX ===== */
 
 /* Animation Scroll Container - Layer 1 */
@@ -976,16 +977,82 @@ img {
 .shrinking-image-wrapper {
     position: fixed;
     top: 100px; /* Below header - adjust if header height changes */
+=======
+/* ===== SCROLL ANIMATION OVERLAY STYLES ===== */
+
+/* Keyframe animation */
+@keyframes heroShrink {
+  0% {
+    top: 100px;
+>>>>>>> 375f941 (Update website content)
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
     height: calc(100vh - 100px);
+<<<<<<< HEAD
     z-index: 100;
     overflow: hidden;
     transition: all 0.05s linear;
 }
 
 .shrinking-image {
+=======
+    border-radius: 0;
+  }
+  24% {
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 850px;
+    border-radius: 0;
+  }
+  95% {
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1340px;
+    height: 810px;
+    border-radius: 12px;
+  }
+  100% {
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1336px;
+    height: 800px;
+    border-radius: 12px;
+  }
+}
+
+.animation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 500;
+    pointer-events: none;
+}
+
+.animation-overlay.hidden {
+    display: none;
+}
+
+.overlay-image-wrapper {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: calc(100vh - 100px);
+    z-index: 501;
+    overflow: hidden;
+    animation: none;
+}
+
+.overlay-image {
+>>>>>>> 375f941 (Update website content)
     width: 100%;
     height: 100%;
     background: url('../images/Emma-Izzy-Green-Lounger.jpg');
@@ -993,8 +1060,12 @@ img {
     background-position: center;
 }
 
+<<<<<<< HEAD
 /* Welcome overlay text */
 .welcome-overlay {
+=======
+.welcome-text {
+>>>>>>> 375f941 (Update website content)
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1005,6 +1076,7 @@ img {
     color: #fff;
     text-align: center;
     text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+<<<<<<< HEAD
     z-index: 101;
     white-space: nowrap;
     opacity: 1;
@@ -1085,4 +1157,93 @@ img {
         font-size: 1.1rem;
         padding: 0.75rem 1rem;
     }
+=======
+    z-index: 502;
+    white-space: nowrap;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.3s ease-out;
+    
+    /* Delay and slow fade-in animation */
+    animation: delayedFadeIn 1s ease-in 1s forwards; /* 1s delay, then 1s fade */
+}
+
+@keyframes delayedFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.welcome-text.hidden {
+    opacity: 0;
+    animation: none; /* Cancel animation when hiding */
+}
+
+#main-content {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Hero landing zone - space where animated image will settle */
+.hero-landing-zone {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+  min-height: 800px; /* Reserve space for hero */
+  position: relative;
+}
+
+/* Slogan overlay - appears during animation */
+.slogan-overlay {
+  position: fixed;
+  top: 60px; /* Positioned much higher on screen */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.55rem, 1.75vw + 1rem, 1.9rem);
+  color: #4a3425;
+  font-style: italic;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 2rem;
+  z-index: 550;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  pointer-events: none;
+}
+
+/* Hover effect for finished hero */
+.overlay-image-wrapper:hover .overlay-image {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.overlay-image {
+  transition: transform 0.3s ease;
+}
+
+/* Slogan landing zone - space where slogan overlay will settle */
+.slogan-landing-zone {
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 2rem;
+  min-height: 3rem; /* Reserve space for slogan */
+>>>>>>> 375f941 (Update website content)
 }

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Scroll Demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      color: #333;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #e6e6e6 30%,
+        #b8b8b8 70%,
+        #808080 100%
+      );
+      overflow-x: hidden;
+    }
+
+    /* Simple header for the demo */
+    header {
+      position: relative;
+      z-index: 10;
+      background: #ffffff;
+      border-bottom: 4px solid #8b5a2b;
+      padding: 1rem 2rem;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.75rem 1rem 3rem; /* same idea as your site */
+    }
+
+    /* ========= SCROLL VARIABLES ========= */
+    :root {
+      /* Start state: full-bleed, square hero, slogan hidden */
+      --hero-shell-pad: 0px;
+      --hero-radius: 0px;
+      --hero-height: 100vh;       /* temp until JS measures */
+      --hero-translateY: 0px;
+
+      --slogan-translateY: 80px;
+      --slogan-opacity: 0;
+    }
+
+    /* Break hero out to full viewport width */
+    .hero-full {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+
+    /* Hero shell that shrinks from full-bleed → padded box */
+    .hero-shell {
+      width: 100%;
+      max-width: none;
+      margin: 0 auto 3rem;
+      padding: 0 var(--hero-shell-pad);
+      transition: padding 0.25s linear;
+    }
+
+    /* Slogan above hero */
+    .slogan {
+      text-align: center;
+      font-family: "Crimson Text", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.55rem, 1.75vw + 1rem, 1.9rem);
+      color: #4a3425;
+      font-style: italic;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+      background: transparent;
+
+      transform: translateY(var(--slogan-translateY));
+      opacity: var(--slogan-opacity);
+      transition: transform 0.25s linear, opacity 0.25s linear;
+    }
+
+    .hero {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 0 3rem;
+      background: transparent;
+
+      transform: translateY(var(--hero-translateY));
+      transition: transform 0.25s linear;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: var(--hero-height);
+      background-image: url("https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1600");
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--hero-radius);
+      overflow: hidden;
+      transition:
+        height 0.25s linear,
+        border-radius 0.25s linear,
+        transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Dog cards / content */
+    .dogs-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      background: transparent;
+    }
+
+    .dog-card {
+      height: 300px;
+      background: #e0e0e0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #777;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dog-card:hover {
+      transform: scale(1.05);
+    }
+
+    .dog-card-title {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 1.5rem 0.75rem 2.5rem;
+      }
+      .dogs-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    River Dachs — Demo Header
+  </header>
+
+  <main>
+    <div class="home-content active">
+      <!-- FULL-WIDTH HERO -->
+      <div class="hero-full">
+        <div class="hero-shell">
+          <div class="slogan">
+            Breeding Excellence, Raising Love, Bringing Joy
+          </div>
+          <div class="hero">
+            <div class="hero-image"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT / DOG CARDS -->
+      <div class="dogs-grid">
+        <div class="dog-card">
+          <div class="dog-card-title">Beautiful Litter</div>
+          Card 1
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-title">Our Champions</div>
+          Card 2
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-title">Adorable Puppies</div>
+          Card 3
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-title">Happy Families</div>
+          Card 4
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const header = document.querySelector("header");
+      const main = document.querySelector("main");
+      const heroImage = document.querySelector(".hero-image");
+      const slogan = document.querySelector(".slogan");
+      const root = document.documentElement;
+
+      if (!header || !main || !heroImage || !slogan) return;
+
+      const INTRO_SCROLL = 320;      // px of scroll to complete the intro
+      const FINAL_HEIGHT = 420;      // hero final height
+      const FINAL_PAD = 32;          // 2rem side padding
+      const FINAL_RADIUS = 16;       // rounded corners
+
+      let startHeroHeight = FINAL_HEIGHT;
+      let startHeroTranslateY = 0;
+
+      function measureStart() {
+        const headerHeight = header.offsetHeight;
+
+        const mainStyles = getComputedStyle(main);
+        const mainPadTop = parseFloat(mainStyles.paddingTop) || 0;
+
+        // Hero height from bottom of header to bottom of viewport
+        startHeroHeight = window.innerHeight - headerHeight;
+        if (startHeroHeight < FINAL_HEIGHT) {
+          startHeroHeight = FINAL_HEIGHT;
+        }
+
+        // Pull hero up to visually touch the header (cancel main's padding-top)
+        startHeroTranslateY = -mainPadTop;
+
+        // Initial state: full-screen, full-bleed, square, slogan hidden
+        root.style.setProperty("--hero-height", startHeroHeight + "px");
+        root.style.setProperty("--hero-shell-pad", "0px");
+        root.style.setProperty("--hero-radius", "0px");
+        root.style.setProperty("--hero-translateY", startHeroTranslateY + "px");
+        root.style.setProperty("--slogan-translateY", "80px");
+        root.style.setProperty("--slogan-opacity", "0");
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function updateHeroIntro() {
+        const y = window.scrollY || 0;
+        const progress = Math.max(0, Math.min(1, y / INTRO_SCROLL));
+
+        const heroHeight = lerp(startHeroHeight, FINAL_HEIGHT, progress);
+        const heroPad = lerp(0, FINAL_PAD, progress);
+        const heroRadius = lerp(0, FINAL_RADIUS, progress);
+        const heroTranslateY = lerp(startHeroTranslateY, 0, progress);
+        const sloganTranslateY = lerp(80, 0, progress);
+        const sloganOpacity = lerp(0, 1, progress);
+
+        root.style.setProperty("--hero-height", heroHeight + "px");
+        root.style.setProperty("--hero-shell-pad", heroPad + "px");
+        root.style.setProperty("--hero-radius", heroRadius + "px");
+        root.style.setProperty("--hero-translateY", heroTranslateY + "px");
+        root.style.setProperty("--slogan-translateY", sloganTranslateY + "px");
+        root.style.setProperty("--slogan-opacity", String(sloganOpacity));
+      }
+
+      function init() {
+        measureStart();
+        updateHeroIntro();
+      }
+
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+        init();
+      } else {
+        window.addEventListener("DOMContentLoaded", init);
+      }
+
+      window.addEventListener("resize", () => {
+        measureStart();
+        updateHeroIntro();
+      });
+
+      window.addEventListener("scroll", updateHeroIntro, { passive: true });
+    })();
+  </script>
+</body>
+</html>

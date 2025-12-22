@@ -1,0 +1,1058 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2c5f7c;
+  outline-offset: 2px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global page background – current gradient in use */
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  color: #333;
+  line-height: 1.6;
+
+  /* Softer black gradient */
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #e6e6e6 30%,
+    #b8b8b8 70%,
+    #808080 100%
+  );
+}
+
+/* Slogan on home page */
+.slogan {
+  text-align: center;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 700;
+
+  /* Big, but responsive */
+  font-size: clamp(1.55rem, 1.75vw + 1rem, 1.9rem);
+
+  /* Rich brown */
+  color: #4a3425;
+  font-style: italic;
+
+  /* Match hero width & keep centered */
+  max-width: 1400px;
+  margin: 0 auto;
+
+  /* Space after header + above hero */
+  padding: 1.5rem 2rem 2rem;
+
+  background: transparent;
+}
+
+/* HERO SECTION */
+.hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    background: transparent;
+}
+
+.hero-image {
+    width: 100%;
+    height: 800px;
+    background: url('../images/Emma-Izzy-Green-Lounger.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+.hero:hover {
+    transform: none;
+}
+
+.hero-content {
+    display: none;
+}
+
+/* DOGS GRID */
+.dogs-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    background: transparent;
+}
+
+.dog-card {
+    height: 500px;
+    background: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.dog-card:hover {
+    transform: scale(1.05);
+}
+
+.dog-card::after {
+    content: none;
+}
+
+.dog-card-title {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: #666;
+    font-size: 1.2rem;
+    z-index: 1;
+    background: rgba(255,255,255,0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.dog-card-placeholder {
+    font-size: 3rem;
+    color: #ccc;
+}
+
+/* Specific dog images */
+.dog-card:nth-child(1) {
+    background-image: url('https://i.imgur.com/zfDYL9M.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(1) .dog-card-placeholder {
+    display: none;
+}
+
+.dog-card:nth-child(2) {
+    background-image: url('https://i.imgur.com/9TyepZs.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(2) .dog-card-placeholder {
+    display: none;
+}
+
+.dog-card:nth-child(3) {
+    background-image: url('https://i.imgur.com/ZtrYBUJ.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(3) .dog-card-placeholder {
+    display: none;
+}
+
+.dog-card:nth-child(4) {
+    background-image: url('../images/Izzy-Flowers.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(4) .dog-card-placeholder {
+    display: none;
+}
+
+.dog-card:nth-child(5) {
+    background-image: url('https://i.imgur.com/gRkuAMR.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(5) .dog-card-placeholder {
+    display: none;
+}
+
+.dog-card:nth-child(6) {
+    background-image: url('../images/Emma-Jean-Grass.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.dog-card:nth-child(6) .dog-card-placeholder {
+    display: none;
+}
+
+/* CONTENT PAGES (single-page routing structure) */
+.content-page {
+    display: none;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+}
+
+.content-page.active {
+    display: block;
+}
+
+.content-page h2 {
+    color: #2c5f7c;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.content-page h3 {
+    color: #4a9bc6;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.content-page p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* TEMPLATE PAGE (gray background block) */
+.template-page {
+    display: none;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: gray;
+}
+
+.template-page.active {
+    display: block;
+}
+
+.template-page h2 {
+    color: #2c5f7c;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.template-page h3 {
+    color: #4a9bc6;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.template-page p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* CONTACT FORM */
+.contact-form {
+    max-width: 700px;
+    margin: 2rem 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4a9bc6;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.radio-label input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.radio-label span {
+    font-size: 0.95rem;
+}
+
+.submit-btn {
+    background: #2c5f7c;
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #4a9bc6;
+}
+
+.contact-info-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e0e0e0;
+}
+
+.contact-info-section h3 {
+    color: #2c5f7c;
+    font-size: 1.5rem;
+}
+
+/* HOME CONTENT VISIBILITY */
+.home-content.active {
+    display: block;
+}
+
+.home-content {
+    display: none;
+}
+
+/* RESPONSIVE FORM */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .radio-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+/* ABOUT US PAGE (hero style alt layout) */
+.about-us-page {
+    padding: 0 !important;
+    background: transparent !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+.about-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 600px;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+
+.about-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    background-image: url('../images/Izzy-hero.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(248, 248, 248, 1) 0%,
+        rgba(248, 248, 248, 1) 3%,
+        rgba(248, 248, 248, 0.99) 8%,
+        rgba(248, 248, 248, 0.98) 13%,
+        rgba(248, 248, 248, 0.96) 18%,
+        rgba(248, 248, 248, 0.94) 23%,
+        rgba(248, 248, 248, 0.91) 28%,
+        rgba(248, 248, 248, 0.87) 33%,
+        rgba(248, 248, 248, 0.83) 38%,
+        rgba(248, 248, 248, 0.78) 43%,
+        rgba(248, 248, 248, 0.72) 48%,
+        rgba(248, 248, 248, 0.65) 53%,
+        rgba(248, 248, 248, 0.57) 58%,
+        rgba(248, 248, 248, 0.48) 63%,
+        rgba(248, 248, 248, 0.39) 68%,
+        rgba(248, 248, 248, 0.30) 73%,
+        rgba(248, 248, 248, 0.21) 78%,
+        rgba(248, 248, 248, 0.13) 83%,
+        rgba(248, 248, 248, 0.06) 88%,
+        rgba(248, 248, 248, 0) 93%
+    );
+    z-index: 2;
+}
+
+.about-content {
+    position: relative;
+    z-index: 3;
+    max-width: 850px;
+    padding: 4rem 3rem 4rem;
+    padding-left: 7px;
+    margin-left: 4rem;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.about-content h1 {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.2rem;
+    color: #000;
+    letter-spacing: 0.02em;
+}
+
+.about-content p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+    line-height: 27.2px;
+    max-width: 100%;
+    row-gap: 16px;
+    margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+    .about-content {
+        max-width: 550px;
+        padding: 3rem 2rem;
+    }
+    .about-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        min-height: 500px;
+    }
+    .about-bg {
+        width: 100%;
+        opacity: 0.3;
+    }
+    .about-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(248, 248, 248, 0.98) 0%,
+            rgba(248, 248, 248, 0.95) 30%,
+            rgba(248, 248, 248, 0.85) 60%,
+            rgba(248, 248, 248, 0.7) 100%
+        );
+    }
+    .about-content {
+        margin-left: 0;
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+    }
+    .about-content h1 {
+        font-size: 2rem;
+    }
+    .about-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content h1 {
+        font-size: 1.75rem;
+    }
+    .about-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/* GENERIC PAPER BLOCK (if used globally) */
+.paper {
+    max-width: 1080px;
+    margin: auto;
+    margin-bottom: 4rem;
+    padding: 60px;
+    background-image: url("../images/texture-paper.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+.paper p {
+    margin-bottom: 1.4rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    text-align: left;
+    font-weight: 400;
+    color: #1a1a1a;
+}
+
+.paper h2 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    text-align: left;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/************************************************************
+ PAGE TITLE BAR — SHARED BASE STYLES
+************************************************************/
+
+.page-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: min(2vw, 1.5rem);
+  margin: 2.5rem auto;
+
+  /* Responsive content width */
+  width: 100%;
+  max-width: min(1200px, 92vw);
+
+  padding: 0 1rem;
+  flex-wrap: nowrap;
+}
+
+/************************************************************
+ PAGE TITLE — TEXT
+************************************************************/
+
+.page-title {
+  font-family: "Crimson Text", Georgia, serif;
+  font-weight: 600;
+  color: #3a2a2a;
+  text-transform: capitalize;
+  letter-spacing: 0.04em;
+  text-align: center;
+
+  margin: 0;
+  padding: 0 0.5rem;
+
+  /* Responsive, slightly smaller */
+  font-size: clamp(1.1rem, 2.1vw, 1.5rem);
+
+  /* Keep title on ONE LINE (you’ll keep titles reasonably short) */
+  white-space: nowrap;
+
+  /* Title width is its content only; rails take leftover space */
+  flex: 0 0 auto;
+}
+
+/* Use this when you know the title is wordier */
+.page-title--long {
+  font-size: clamp(1rem, 1.9vw, 1.35rem);
+}
+
+/************************************************************
+ PAW RAILS — BASE STYLES (left + right)
+************************************************************/
+
+.page-title-bar::before,
+.page-title-bar::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 0;
+
+  /* Paw rail height = paw size */
+  height: 1.2em;
+
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center;
+
+  margin: 0 0.5rem;
+}
+
+/************************************************************
+ DARK (DEFAULT) PAW STRIP
+→ Uses ../images/paw-print.svg
+************************************************************/
+
+.page-title-bar::before,
+.page-title-bar::after {
+  background-image: url("../images/paw-print.svg");
+}
+
+/************************************************************
+ LIGHT VERSION OF PAWS
+→ Uses ../images/paw-print-light.svg
+************************************************************/
+
+.page-title-bar--light::before,
+.page-title-bar--light::after {
+  background-image: url("../images/paw-print-light.svg");
+  opacity: 0.65;   /* softer look */
+}
+
+/************************************************************
+ ALTERNATING DARK + LIGHT VERSION
+→ Uses ../images/alternating-paw-print.svg
+************************************************************/
+
+.page-title-bar--alt::before,
+.page-title-bar--alt::after {
+  background-image: url("../images/alternating-paw-print.svg");
+}
+
+/************************************************************
+ BASE PAGE CONTENT (INFO PAGES)
+************************************************************/
+
+.page-content {
+  max-width: min(1000px, 92vw);
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #3a2a2a;
+}
+
+/* Paragraph spacing */
+.page-content p {
+  margin: 0 0 1.25rem;
+}
+
+/* Headings inside content */
+.page-content h2,
+.page-content h3 {
+  font-family: "Crimson Text", Georgia, serif;
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+  color: #3a2a2a;
+  font-weight: 600;
+}
+
+.page-content h2 {
+  font-size: 1.35rem;
+}
+
+.page-content h3 {
+  font-size: 1.18rem;
+}
+
+/* Lists */
+.page-content ul,
+.page-content ol {
+  margin: 0 0 1.25rem 1.5rem;
+  padding: 0;
+}
+
+.page-content li {
+  margin-bottom: 0.4rem;
+}
+
+.page-content li p {
+  margin-bottom: 0.3rem;
+}
+
+/* Optional subtle divider */
+.page-content hr {
+  border: 0;
+  border-top: 1px solid #e0d7cf;
+  margin: 2rem 0;
+}
+
+/************************************************************
+ FAQ STYLE
+************************************************************/
+
+.faq-list {
+  margin-top: 1rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-question {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.faq-answer p {
+  margin: 0 0 0.8rem;
+}
+
+/************************************************************
+ LEGAL / CONTRACT STYLE
+************************************************************/
+
+.page-content--legal {
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.page-content--legal p {
+  margin: 0 0 0.9rem;
+}
+
+.page-content--legal h2 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-content--legal ol {
+  margin: 0 0 1rem 1.5rem;
+}
+
+.page-content--legal ol li {
+  margin-bottom: 0.5rem;
+}
+
+.page-content--legal .section-heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+/************************************************************
+ PHOTO GRID PAGES
+************************************************************/
+
+.photo-page {
+  max-width: min(1300px, 94vw);
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.photo-card {
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f4eee7;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.photo-caption {
+  padding: 0.6rem 0.9rem 0.8rem;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 0.95rem;
+  color: #3a2a2a;
+}
+
+/* PAGE LAYOUT CONTAINER */
+/* Page layout container – just width & padding now */
+/*
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+
+  */
+  /* Ultra-subtle warm fade */
+  /*
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%, */     /* pure white at the top */
+  /*  #fefefe 20%,   */  /* nearly white */
+  /*  #fdfbf9 50%,   */  /* trace warm hint */
+  /*  #faf7f4 100%   */  /* gentle warmth anchoring the bottom */
+/*  );
+}
+*/
+
+/* PAGE LAYOUT CONTAINER */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.75rem 1rem 3rem;  /* ↑ top padding gives more room under header */
+}
+
+/* Light gray content box that sits on top of the gradient */
+.page-box {
+  max-width: 1000px;
+  margin: 3.5rem auto 5rem;
+  padding: 2.5rem 2.5rem 3rem;
+  border-radius: 8px;
+
+  background: linear-gradient(
+    to bottom,
+    #e6e6e6 0%,     /* darker gray at top */
+    #f5f5f5 60%,    /* soft transition */
+    #ffffff 100%    /* white at the bottom */
+  );
+}
+
+/* Accessible skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  background: #4a3425;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  z-index: 10000;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.skip-link:focus-visible {
+  left: 0.75rem;
+}
+
+/* ===========================
+   RESPONSIVE LAYOUT RESCUE LAYER
+   (safe to append at end)
+=========================== */
+
+/* Make regular <img> tags scale with the viewport */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Don't let the hero be taller than the viewport */
+.hero-image {
+  max-height: 80vh;   /* at most 80% of the screen height */
+}
+
+/* Tablet-ish */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 1.25rem 2.5rem;
+  }
+
+  .hero-image {
+    height: 480px; /* down from 800px */
+  }
+
+  .dogs-grid {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .dog-card {
+    height: 380px;
+  }
+}
+
+/* Phones and small tablets */
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem 0.75rem 2.5rem;
+  }
+
+  .hero {
+    padding: 0.5rem 0.75rem 2rem;
+  }
+
+  .hero-image {
+    height: 320px;
+    border-radius: 10px;
+  }
+
+  .slogan {
+    padding-inline: 1rem;
+  }
+
+  .dogs-grid {
+    grid-template-columns: 1fr;  /* single column on phones */
+    padding: 2rem 0.75rem;
+    gap: 1.5rem;
+  }
+
+  .dog-card {
+    height: 260px;
+  }
+
+  .dog-card-title {
+    font-size: 1rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .hero-image {
+    height: 260px;
+  }
+
+  .dogs-grid {
+    padding-inline: 0.5rem;
+    gap: 1.25rem;
+  }
+
+  .dog-card {
+    height: 220px;
+  }
+}
+
+/* ===== SINGLE HERO SCROLL ANIMATION ===== */
+
+/* Welcome text overlay */
+.welcome-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+/* Slogan - lots of whitespace above it */
+.slogan {
+  text-align: center;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.55rem, 1.75vw + 1rem, 1.9rem);
+  color: #4a3425;
+  font-style: italic;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  padding-top: 200px; /* Lots of whitespace above */
+  background: transparent;
+}
+
+/* Hero section container */
+.hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 2rem 3rem; /* Whitespace between slogan and hero */
+  background: transparent;
+}
+
+/* Hero image - starts fixed full screen, becomes static */
+.hero-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../images/Emma-Izzy-Green-Lounger.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0;
+  z-index: 500;
+}
+
+/* When animation completes, hero becomes part of page flow */
+.hero-image.animation-complete {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: 800px !important;
+  border-radius: 12px !important;
+  z-index: 1 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: 2rem;
+  }
+  
+  .slogan {
+    padding-top: 150px;
+  }
+  
+  .hero {
+    padding-top: 60px;
+  }
+  
+  .hero-image.animation-complete {
+    height: 500px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text {
+    font-size: 1.5rem;
+  }
+  
+  .slogan {
+    padding-top: 100px;
+  }
+  
+  .hero {
+    padding-top: 40px;
+  }
+  
+  .hero-image.animation-complete {
+    height: 400px !important;
+  }
+}

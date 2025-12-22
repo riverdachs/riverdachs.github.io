@@ -17,6 +17,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
   <!-- SHARED HEADER - Always visible -->
   <div id="header-placeholder"></div>
 
@@ -84,14 +85,87 @@
     <!-- SHARED FOOTER -->
     <div id="footer-placeholder"></div>
   </div>
+=======
+  <!-- SHARED HEADER -->
+  <div id="header-placeholder"></div>
+
+  <!-- INVISIBLE SCROLL DRIVER - creates scrollable height for animation -->
+  <div id="scroll-driver" style="height: 1200px; pointer-events: none;"></div>
+
+  <!-- ANIMATION OVERLAY - Full screen shrinking image -->
+  <div class="animation-overlay" id="animationOverlay">
+    <div class="overlay-image-wrapper" id="overlayImageWrapper">
+      <div class="overlay-image"></div>
+    </div>
+    <div class="welcome-text" id="welcomeText">Welcome to RiverDachs</div>
+    
+    <!-- SLOGAN OVERLAY - Fades in during animation -->
+    <div class="slogan-overlay" id="sloganOverlay">
+      Breeding Excellence, Raising Love, Bringing Joy
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <div class="home-content active">
+      <!-- SLOGAN LANDING ZONE - Where slogan overlay will settle -->
+      <div class="slogan-landing-zone" id="sloganLandingZone">
+        <!-- Slogan overlay will move here at completion -->
+      </div>
+
+      <!-- HERO LANDING ZONE - Where animated image will settle -->
+      <div class="hero-landing-zone" id="heroLandingZone">
+        <!-- Animated overlay will move here at completion -->
+      </div>
+
+      <!-- DOG GRID -->
+      <div class="dogs-grid">
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Beautiful Litter</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Our Champions</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Adorable Puppies</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Family Favorites</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">New Arrivals</div>
+        </div>
+        <div class="dog-card">
+          <div class="dog-card-placeholder">📷</div>
+          <div class="dog-card-title">Happy Families</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <div id="footer-placeholder"></div>
+>>>>>>> 375f941 (Update website content)
 
   <!-- LOAD SHARED HEADER + FOOTER -->
   <script src="assets/js/includes.js"></script>
   
+<<<<<<< HEAD
   <!-- LAYERED SCROLL ANIMATION -->
   <script src="assets/js/layered-scroll.js"></script>
 
   <!-- Global nav toggle for hamburger/waffle -->
+=======
+  <!-- SCROLL ANIMATION -->
+  <script src="assets/js/layered-scroll.js"></script>
+
+  <!-- Global nav toggle -->
+>>>>>>> 375f941 (Update website content)
   <script>
     document.addEventListener('click', function (event) {
       const toggle = event.target.closest('.nav-toggle');

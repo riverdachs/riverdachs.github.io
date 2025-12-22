@@ -1,0 +1,232 @@
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    gap:2rem;
+    margin-bottom: 0.75rem;
+}
+.footer-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.footer-dog-silhouette {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer-name-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.footer-name {
+    color: #4a3425;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Crimson Text', Georgia, serif;
+    line-height: 0.9;
+    text-transform: capitalize;
+}
+
+.footer-subtitle {
+    color: #c8985f;
+    font-size: 0.6rem;
+    font-weight: 600;
+    font-family: 'Montserrat', Arial, sans-serif;
+    line-height: 1;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    padding-left: 0.05rem;
+    margin-left: 0;
+}
+
+/* SOCIAL ICONS CENTERED */
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer-social a {
+    color: #000 !important;
+    font-size: 1.2rem;
+    text-decoration: none !important;
+    transition: color 0.3s;
+}
+
+.footer-social a:link,
+.footer-social a:visited,
+.footer-social a:active {
+    color: #000 !important;
+}
+
+.footer-social a:hover {
+    color: #666 !important;
+}
+
+.social-icon {
+    width: 24px;
+    height: auto;
+}
+
+.social-icon:hover {
+    opacity: .7;
+}
+
+/* FOOTER NAV LINKS (right side) */
+.footer-nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.footer-nav-links a {
+    color: #4a3425 !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.footer-nav-links a:link,
+.footer-nav-links a:visited,
+.footer-nav-links a:active {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+.footer-nav-links a:hover {
+    color: #c8985f !important; /* fixed missing 'f' */
+}
+
+/* BOTTOM GRAY BAR SECTION */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eeeeee;
+  border-top: 1px solid #ececec;
+  color: #555;
+  font-size: 0.8rem;
+  padding: 0.75rem 1rem;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 0.75rem 1rem 1rem;
+  }
+}
+/* MATCHING BROWN SEPARATOR ABOVE FOOTER */
+footer,
+footer,
+.site-footer {
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,     /* footer stays white at top */
+        #ffffff 55%,    /* most of footer white */
+        #fafafa 100%    /* gentle gray at the very bottom */
+    );
+    padding: 1rem 2rem 0.75rem;
+    color: #333;
+    margin-top: 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+footer::before,
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;              /* top of footer */
+    left: 0;
+    right: 0;
+    height: 2px;         /* matches header strip exactly */
+    background-color: #4a3425;
+    z-index: 5;          /* above footer background but below content */
+}
+/* Tablet and below: stack footer elements */
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column;  /* Stack vertically */
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-logo-left {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+}
+
+/* Tidy footer at mid and small widths: prevent crowding */
+@media (max-width: 1100px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-logo-left {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Let these flow instead of absolute positioning */
+  .footer-social,
+  .footer-nav-links {
+    position: static;
+    transform: none;
+    margin: 0.25rem 0;
+  }
+
+  .footer-social {
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .footer-nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .footer-nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem 1rem;
+  }
+}
