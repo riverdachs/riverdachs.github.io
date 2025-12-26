@@ -1,44 +1,249 @@
- /* Override generic .paper for this page to use your Style 3 tweaks */
+.paper {
+    /* --- Layout --- */
+    max-width: 1080px;
+    margin: 0 auto 3rem auto;
+    padding: 60px;
+    text-align: left;
+    position: relative;
+    /* z-index: 1; -> You generally only need this if the paper is sliding under/over other elements. I left it out to keep it clean, but add it back if your menu is disappearing behind the paper. */
+
+    /* --- The Paper Effect --- */
+    
+    /* 1. Base Color: Changed to a neutral "Bone/Off-White" */
+    background-color: #f4f1ea;
+
+    /* 2. Texture & Vignette */
+    background-image: 
+        /* The Noise: I lowered opacity to 0.15 for a subtle, clean texture */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+        
+        /* The Vignette: Adds subtle depth to the corners */
+        radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.06) 100%);
+
+    /* 3. Blending: 'multiply' works best for clean paper textures */
+    background-blend-mode: multiply;
+
+    /* --- The Edges --- */
+    border-radius: 6px;
+    /* The deep shadow you liked */
+    box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Hybrid Premium Balanced Typography (Style 3) */
+.paper p {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    line-height: 1.48;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 1.05em;
+    letter-spacing: 0.005em;
+}
+
+.paper h1,
+.paper h2 {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+/* main heading inside paper (if you use h1 there later) */
+.paper h1 {
+    font-size: 38px;
+}
+
+/* current section title inside paper */
+.paper h2 {
+    font-size: 30px;
+    line-height: 1.25;
+}
+
+/* ===== PRIVACY POLICY SPECIFIC STYLES ===== */
+
+/* Shared styling for all highlight/info boxes */
+/* Update these sections in your CSS */
+.paper .highlight-box,
+.paper .contact-info,
+.paper .important-notice, 
+.paper .contact-section,
+.paper .last-updated {
+	/* 1. The Vellum Background */
+    background-color: rgba(255, 255, 255, 0.7); 
+
+    /* 2. The Border "Pop" */
+    /* A crisp, thin grey outline to define the edge */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    
+    /* 3. The Lift & Inner Highlight */
+    /* First value: a soft shadow underneath to lift it up */
+    /* Second value (inset): a faint white inner line to crisp up the edges */
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+
+    /* Standard Layout Stuff */
+    border-radius: 6px;
+    color: #000;
+  }
+    
+.policy-container {
+    /* Uses default styles, no extra container needed */
+}
+
+.policy-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #4a3425;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+.policy-header h1 {
+    color: #000;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.policy-header .business-name {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.paper .last-updated {
+/*    background: #f9f9f9; */
+    padding: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.paper h2 {
+    color: #000;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 1.5rem;
+    margin-top: 35px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.paper h3 {
+    color: #000;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.paper p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.paper ul, 
+.paper ol {
+    margin: 12px 0 12px 30px;
+}
+
+.paper li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.paper .intro-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.paper .highlight-box {
+  /*  background: #f9f9f9; */
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+.paper .contact-info {
+  /*  background: #f9f9f9; */
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 25px;
+    font-size: 0.95rem;
+}
+
+.paper .contact-info strong {
+    color: #000;
+}
+
+.paper .important-notice {
+  /*  background: #f9f9f9; */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.paper .table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.paper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.paper th,
+.paper td {
+    padding: 12px;
+    text-align: left;
+    border: none;
+}
+
+.paper th {
+    background-color: transparent;
+    color: #000;
+    font-weight: bold;
+}
+
+.paper .contact-section {
+  /*  background: #f9f9f9; */
+    padding: 25px;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+.paper .contact-section h3 {
+    margin-top: 0;
+    color: #000;
+}
+
+.paper a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.paper a:hover {
+    text-decoration: underline;
+    color: #c8823c;
+}
+
+@media (max-width: 768px) {
     .paper {
-      max-width: 1080px;
-      margin: 0 auto 3rem auto;
-      padding: 60px;
-      background-image: url("../images/texture-paper.jpg");
-      background-size: cover;
-      background-position: center;
-      border-radius: 6px;
-      box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.35);
-      text-align: left;
+        padding: 15px 20px 30px;
     }
-
-    /* Hybrid Premium Balanced Typography (Style 3) */
-    .paper p {
-      font-family: Georgia, serif;
-      font-size: 21px;
-      line-height: 1.48;
-      font-weight: 400;
-      color: #1a1a1a;
-      margin-bottom: 1.05em;
-      letter-spacing: 0.005em;
+    
+    .policy-header h1 {
+        font-size: 1.6rem;
     }
-
-    .paper h1,
+    
     .paper h2 {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-weight: 700;
-      color: #000;
-      line-height: 1.15;
-      margin-bottom: 1rem;
+        font-size: 1.3rem;
     }
-
-    /* main heading inside paper (if you use h1 there later) */
-    .paper h1 {
-      font-size: 38px;
-    }
-
-    /* current section title inside paper */
-    .paper h2 {
-      font-size: 30px;
-      line-height: 1.25;
-    }
-
+}
